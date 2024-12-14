@@ -55,7 +55,7 @@ def get_instance_ip(instance_id):
 
 # SSH untuk mengeksekusi perintah pada instance
 def ssh_connect(instance_ip):
-    ORA = "my-aws-key"  # Ganti dengan nama private key Anda tanpa ekstensi '.pem'
+    ORA = "ORA"  # Ganti dengan nama private key Anda tanpa ekstensi '.pem'
     key = paramiko.RSAKey.from_private_key_file(f"{ORA}.pem")
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
