@@ -4,11 +4,11 @@ import paramiko
 
 # Konfigurasi AWS
 aws_region = 'us-east-1'  # Ganti dengan region yang sesuai
-ami_id = 'ami-005fc0f236362e99f'  # Ganti dengan ID AMI (misalnya Ubuntu 20.04)
+ami_id = 'ami-0e2c8caa4b6378d8c'  # Ganti dengan ID AMI (misalnya Ubuntu 20.04)
 instance_type = 't2.micro'  # Pilih tipe instance yang sesuai
 key_name = 'ORA'  # Ganti dengan nama key pair AWS Anda
-security_group = 'your-security-group'  # Ganti dengan security group yang sesuai
-subnet_id = 'subnet-xxxxxx'  # Ganti dengan ID subnet Anda
+security_group = 'sg-0bfa02e88af4a6189'  # Ganti dengan security group yang sesuai
+subnet_id = 'subnet-0a0b40983c77acdc1'  # Ganti dengan ID subnet Anda
 instance_name = 'Proxy-Residensial-EC2'
 
 # Kredensial Luminati (ganti dengan kredensial Anda)
