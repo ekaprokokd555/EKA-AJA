@@ -6,7 +6,7 @@ import paramiko
 aws_region = 'us-east-1'  # Ganti dengan region yang sesuai
 ami_id = 'ami-0e2c8caa4b6378d8c'  # Ganti dengan ID AMI (misalnya Ubuntu 20.04)
 instance_type = 't2.micro'  # Pilih tipe instance yang sesuai
-key_name = 'your-key-pair'  # Ganti dengan nama key pair AWS Anda
+key_name = 'ORA'  # Ganti dengan nama key pair AWS Anda
 security_group = 'sg-0bfa02e88af4a6189'  # Ganti dengan security group yang sesuai
 subnet_id = 'subnet-0a0b40983c77acdc1'  # Ganti dengan ID subnet Anda
 instance_name = 'Proxy-Residensial-EC2'
@@ -30,14 +30,10 @@ def create_instance():
         SubnetId=subnet_id,
         MinCount=1,
         MaxCount=1,
-        TagSpecifications=[
-            {
-                'ResourceType': 'instance',
-                'Tags': [
-                    {'Key': 'Name', 'Value': instance_name}
-                ]
-            }
-        ]
+        TagSpecifications=[{
+            'ResourceType': 'instance',
+            'Tags': [{'Key': 'Name', 'Value': instance_name}]
+        }]
     )
 
     instance_id = response['Instances'][0]['InstanceId']
@@ -59,7 +55,8 @@ def get_instance_ip(instance_id):
 
 # SSH untuk mengeksekusi perintah pada instance
 def ssh_connect(instance_ip):
-    key = paramiko.RSAKey.from_private_key_file("private_key.pem")
+    ORA = "my-aws-key"  # Ganti dengan nama private key Anda tanpa ekstensi '.pem'
+    key = paramiko.RSAKey.from_private_key_file(f"{ORA}.pem")
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh_client.connect(instance_ip, username='ec2-user', pkey=key)
