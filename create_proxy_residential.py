@@ -59,7 +59,7 @@ def get_instance_ip(instance_id):
 
 # SSH untuk mengeksekusi perintah pada instance
 def ssh_connect(instance_ip):
-    key = paramiko.RSAKey.from_private_key_file(f"{key_name}.pem")
+    key = paramiko.RSAKey.from_private_key_file(f"{ORA}.pem")
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh_client.connect(instance_ip, username='ec2-user', pkey=key)
